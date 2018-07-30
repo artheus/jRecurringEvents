@@ -4,6 +4,8 @@ import org.junit.Test;
 
 import java.time.LocalDate;
 import java.time.Period;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class RecurringEventTest {
@@ -13,7 +15,7 @@ public class RecurringEventTest {
         LocalDate startDate = LocalDate.of(2018, 7, 4);
         IRecurrenceRule recurrenceRule = new FixedStepRecurrenceRule(Period.ofDays(7));
 
-        RecurringEvent evt = new RecurringEvent(startDate, exceptions, recurrenceRule);
+        RecurringEvent evt = new RecurringEvent(startDate, new ArrayList<>(), recurrenceRule);
 
         Boolean occurringOn = evt.occursOn(LocalDate.of(2022, 7, 27));
 
@@ -25,7 +27,7 @@ public class RecurringEventTest {
         LocalDate startDate = LocalDate.of(2018, 7, 4);
         IRecurrenceRule recurrenceRule = new FixedStepRecurrenceRule(Period.ofDays(7));
 
-        RecurringEvent evt = new RecurringEvent(startDate, exceptions, recurrenceRule);
+        RecurringEvent evt = new RecurringEvent(startDate, new ArrayList<>(), recurrenceRule);
 
         List<LocalDate> results = evt.occurrancesBetween(
                 LocalDate.of(2018, 8, 15),
@@ -40,7 +42,7 @@ public class RecurringEventTest {
         LocalDate startDate = LocalDate.of(2018, 7, 4);
         IRecurrenceRule recurrenceRule = new FixedStepRecurrenceRule(Period.ofDays(7));
 
-        RecurringEvent evt = new RecurringEvent(startDate, exceptions, recurrenceRule);
+        RecurringEvent evt = new RecurringEvent(startDate, new ArrayList<>(), recurrenceRule);
 
         List<LocalDate> results = evt.occursOnAny(
                 LocalDate.of(2018, 9, 12),
@@ -57,7 +59,7 @@ public class RecurringEventTest {
         LocalDate startDate = LocalDate.of(2018, 7, 4);
         IRecurrenceRule recurrenceRule = new FixedStepRecurrenceRule(Period.ofDays(7));
 
-        RecurringEvent evt = new RecurringEvent(startDate, exceptions, recurrenceRule);
+        RecurringEvent evt = new RecurringEvent(startDate, new ArrayList<>(), recurrenceRule);
 
         evt.occurrenceStream().limit(300).forEach(o -> System.out.println(o.toString()));
     }
@@ -67,7 +69,7 @@ public class RecurringEventTest {
         LocalDate startDate = LocalDate.of(2018, 7, 4);
         IRecurrenceRule recurrenceRule = new FixedStepRecurrenceRule(Period.ofDays(7));
 
-        RecurringEvent evt = new RecurringEvent(startDate, exceptions, recurrenceRule);
+        RecurringEvent evt = new RecurringEvent(startDate, new ArrayList<>(), recurrenceRule);
 
         System.out.println(evt.firstOccuranceOnOrAfter(LocalDate.of(2019, 8, 19)));
         System.out.println(evt.firstOccuranceOnOrAfter(LocalDate.of(2019, 8, 21)));
